@@ -1,0 +1,110 @@
+{% extends 'base.html' %}
+
+{% block title %}Downloads{% endblock %}
+
+{% block header %}
+<div class="col text-center ">
+    <h4 class="font-weight-light text-white p-2 shadow "><small>Downloads</small></h4>
+</div>
+{% endblock %}
+
+{%block content %}
+<div class="col-md-12 px-4 py-2 text-default">
+    <h6 class="main-header font-weight-normal">Jogo completo com e sem som</h6>
+    <div class="table-responsive mt-4">
+        <table class="table table-sm borderless table-striped table-dark">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Arquivo</th>
+                    <th>Descrição</th>
+                    <th>Tamanho</th>
+                    <th colspan="4">Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Continente MU 1.02P Season 2.5</td>
+                    <td>Jogo completo com som</td>
+                    <td>350MB</td>
+                    <td colspan="4">
+                        <a href="#"><span class="badge badge-danger p-1 px-3">Download 1</span></a>
+                        <a href="#"><span class="badge badge-danger p-1 px-3">Download 2</span></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Continente MU 1.02P Season 2.5</td>
+                    <td>Jogo completo sem som</td>
+                    <td>150MB</td>
+                    <td colspan="4">
+                        <a href="#"><span class="badge badge-danger p-1 px-3">Download 1</span></a>
+                        <a href="#"><span class="badge badge-danger p-1 px-3">Download 2</span></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="col-md-12 px-4 py-2 text-default">
+    <h6 class="main-header font-weight-normal">Utilitários</h6>
+    <div class="table-responsive mt-4">
+        <table class="table table-sm borderless table-striped table-dark">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Arquivo</th>
+                    <th>Descrição</th>
+                    <th colspan="4">Link</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Microsoft Visual C++ Library</td>
+                    <td>Necessário caso o jogo apresente mal funcionamento.</td>
+                    <td colspan="4">
+                        <a href="https://www.microsoft.com/en-us/download/details.aspx?id=40784" target="_blank"><span
+                                class="badge badge-danger p-1 px-3">Download</span></a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Microsoft Visual Basic Library</td>
+                    <td>Necessário caso o launcher apresente mal funcionamento.</td>
+                    <td colspan="4">
+                        <a href="https://www.microsoft.com/en-us/download/details.aspx?id=24417" target="_blank"><span
+                                class="badge badge-danger p-1 px-3">Download</span></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="col-md-12 px-4 py-2 text-default">
+    <h6 class="main-header font-weight-normal">Configurações recomendadas</h6>
+    <div class="table-responsive mt-4">
+        <table class="table table-sm borderless table-striped table-dark">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Componente</th>
+                    <th>Mínimo</th>
+                    <th>Recomendado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Processador</td>
+                    <td>Single Core - 1.0 Ghz</td>
+                    <td>Dual Core 1.5 Ghz (ou superior)</td>
+                </tr>
+                <tr>
+                    <td>Memória RAM</td>
+                    <td>512MB</td>
+                    <td>1GB (ou mais)</td>
+                </tr>
+                <tr>
+                    <td>Sistema Operacional</td>
+                    <td>Microsoft Windows XP SP3</td>
+                    <td>Microsoft Windows 7 (ou superior)</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

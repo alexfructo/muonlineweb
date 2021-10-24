@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+
+{% block title %}Registro{% endblock %}
+
+{% block header %}
+<div class="col text-center ">
+    <h4 class="font-weight-light text-white p-2 shadow "><small>Registre-se</small></h4>
+</div>
+{% endblock %}
+
+{%block content %}
+<div class="row justify-content-center">
+    <div class="col-md-12">
+        <p class="text-center main-content-text">Para registrar-se em nosso servidor, preencha o formulário abaixo com
+            seus dados.</p>
+    </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="col-md-8 text-center alert alert-{{ category }} alert-dismissible fade show" role="alert">
+        <small>{{ message }}</small>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-10">
+        <div class="card-body">
+            <form class="form row justify-content-center" role="form" method="POST" action="{{ url_for('register') }}"
+                id="register">
+                {{ form.hidden_tag() }}
+                <div class="form-group col-md-4">
+                    <label class="main-content-text">Nome de usuário <small><i class="fa fa-question-circle-o"
+                                aria-hidden="true" data-toggle="tooltip" data-placement="top"
+                                title="O nome de usuário é case-sensitive, ou seja, diferencia caracteres maiúsculos de minúsculo. Serão aceitos apenas caracteres de A-Z, 0-9 e underline neste campo."></i></small></label>
+                    {{ form.username(class="form-control form-control-sm",  maxlength=30) }}
+                    {% if form.username.errors %}
+                    <dl>
+                        {% for error in form.username.errors %}
+                        <dd><small class="text-danger">{{ error }}</small></dd>
+                        {% endfor %}
+                    </dl>
+                    {% endif %}
+                </div>
+                <div class="form-group col-md-4">
+                    <label class="main-content-text">Senha <small><i class="fa fa-question-circle-o" aria-hidden="true"
+                                data-toggle="tooltip" data-placement="top"
+                                title="Escolha com muito cuidado sua senha. Recomendamos senhas alfanumericas (letras e ou números), contendo pelo menos seis caracteres."></i></small></label>
+                    {{ form.password(class="form-control form-control-sm", maxlength=30) }}
+                    {% if form.password.errors %}
+                    <dl>
+                        {% for error in form.password.errors %}
+                        <dd><small class="text-danger">{{ error }}</small></dd>
+                        {% endfor %}
+                    </dl>
+                    {% endif %}
+                </div>
+                <div class="form-group col-md-4">
+                    <label class="main-content-text">Confirmação da senha <small><i class="fa fa-question-circle-o"
+                                aria-hidden="true" data-toggle="tooltip" data-placement="top"
+                                title="Digite novamente a mesma senha que você utilizou no campo Senha."></i></small></label>
+                    {{ form.password_r(class="form-control form-control-sm", maxlength=30) }}
+                    {% if form.password_r.errors %}
+                    <dl>
+                        {% for error in form.password_r.errors %}
+                        <dd><small class="text-danger">{{ error }}</small></dd>
+                        {% endfor %}
+                    </dl>
+                    {% endif %}
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="main-content-text">Email <small><i class="fa fa-question-circle-o" aria-hidden="true"
+                                data-toggle="tooltip" data-placement="top" title="Digite um endereço de e-mail válido, pois ele será necessário para você: 1 -
+                        Completar o seu cadastro, através da validação do seu endereço de e-mail. 2 - Alterar e
+                        recuperar os dados do seu cadastro. Atenção! Por motivo de segurança após a validação do
+                        cadastro, o e-mail será vinculado a conta e não será possível alterá-lo."></i></small></label>
+                    {{ form.email(class="form-control form-control-sm") }}
+                    {% if form.email.errors %}
+                    <dl>
+                        {% for error in form.email.errors %}
+                        <dd><small class="text-danger">{{ error }}</small></dd>
+                        {% endfor %}
+                    </dl>
+                    {% endif %}
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="main-content-text">Confirmação do email <small><i class="fa fa-question-circle-o"
+                                aria-hidden="true" data-toggle="tooltip" data-placement="top"
+                                title="Digite novamente o mesmo email que você utilizou no campo Email."></i></small></label>
+                    {{ form.email_r(class="form-control form-control-sm") }}
+                    {% if form.email_r.errors %}
+                    <dl>
+                        {% for error in form.email_r.errors %}
+                        <dd><small class="text-danger">{{ error }}</small></dd>
+                        {% endfor %}
+                    </dl>
+                    {% endif %}
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="main-content-text">Número pessoal <small><i class="fa fa-question-circle-o"
+                                aria-hidden="true" data-toggle="tooltip" data-placement="top" title="Digite um número com 8 dígitos que serão utilizados no jogo para: deletar
+                        personagens, sair de um guild ou deletar uma guild."></i></small></label>
+                    {{ form.personalid(class="form-control form-control-sm", maxlength=8) }}
+                    {% if form.personalid.errors %}
+                    <dl>
+                        {% for error in form.personalid.errors %}
+                        <dd><small class="text-danger">{{ error }}</small></dd>
+                        {% endfor %}
+                    </dl>
+                    {% endif %}
+                </div>
+                <div class="form-group col-md-6">
+                    <label class="main-content-text">Confirmação do nº pessoal <small><i class="fa fa-question-circle-o"
+                                aria-hidden="true" data-toggle="tooltip" data-placement="top"
+                                title="Digite novamente os mesmos números que você utilizou no campo Número pessoal."></i></small></label>
+                    {{ form.personalid_r(class="form-control form-control-sm", maxlength=8) }}
+                    {% if form.personalid_r.errors %}
+                    <dl>
+                        {% for error in form.personalid_r.errors %}
+                        <dd><small class="text-danger">{{ error }}</small></dd>
+                        {% endfor %}
+                    </dl>
+                    {% endif %}
+                </div>
+                <div class="form-group col-md-6">
+                    <div class="form-check my-2">
+                        {{ form.terms(class="form-check-input") }}
+                        <label class="form-check-label text-white">
+                            Li e concordo com os <a href="#" class="text-white">termos de uso</a>.
+                        </label>
+                    </div>
+                    {% if form.terms.errors %}
+                    <dl>
+                        {% for error in form.terms.errors %}
+                        <dd><small class="text-danger">{{ error }}</small></dd>
+                        {% endfor %}
+                    </dl>
+                    {% endif %}
+                </div>
+                <div class="form-group col-md-6 mt-2">
+                    {{ form.recaptcha() }}
+                    {% if form.recaptcha.errors %}
+                    <dl>
+                        <dd><small class="text-danger">Confirme que você não é um robô.</small></dd>
+                    </dl>
+                    {% endif %}
+                </div>
+                {{ form.submit(class="btn btn-danger btn-md col-md-4 mt-5") }}
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascript %}
+<script>
+    $(document).ready(function () {
+        // enable tooltips
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    });
+</script>
+{% endblock %}

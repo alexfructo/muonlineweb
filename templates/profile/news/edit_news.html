@@ -1,0 +1,95 @@
+{% extends 'profile.html' %}
+{% block title %}Painel - Administração - Notícias - Editar{% endblock %}
+{% block subcontent %}
+<div class="row">
+    <div class="col-md-12 mt-2 ">
+        <h6 class="main-header font-weight-normal my-2">Editar Notícia</h6>
+    </div>
+</div>
+<div class="col-md-12 mt-2">
+    <div class="row justify-content-center">
+        <div class="col-md-12">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <p class="col alert alert-{{ category }} mx-1 my-2 p-1 text-center">
+                <small class="text-dark"><strong>Atenção:</strong> {{ message }}</small>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </p>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </div>
+
+        <form action="{{ url_for('account_edit_news', id=data[0])}}" method="post" class="form col-md-8 my-4">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                <label for="title" class="text-default">
+                    <small>Título</small>
+                    <small>
+                        <i class="fa fa-question-circle-o" aria-hidden="true" data-toggle="tooltip" data-placement="top"
+                            title="Informe o título da notícia."></i>
+                    </small>
+                </label>
+                {{ form.title(class="form-control form-control-sm",  maxlength=100) }}
+                {% if form.title.errors %}
+                <dl>
+                    {% for error in form.title.errors %}
+                    <dd><small class="text-danger">{{ error }}</small></dd>
+                    {% endfor %}
+                </dl>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="description" class="text-default">
+                    <small>Descrição</small>
+                    <small>
+                        <i class="fa fa-question-circle-o" aria-hidden="true" data-toggle="tooltip" data-placement="top"
+                            title="Informe a descrição ou resumo da notícia."></i>
+                    </small>
+                </label>
+                {{ form.description(class="form-control form-control-sm",  maxlength=100) }}
+                {% if form.description.errors %}
+                <dl>
+                    {% for error in form.description.errors %}
+                    <dd><small class="text-danger">{{ error }}</small></dd>
+                    {% endfor %}
+                </dl>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <label for="message" class="text-default">
+                    <small>Mensagem</small>
+                    <small>
+                        <i class="fa fa-question-circle-o" aria-hidden="true" data-toggle="tooltip" data-placement="top"
+                            title="Informe a mensagem da notícia."></i>
+                    </small>
+                </label>
+                {{ form.message(class="form-control form-control-sm",  maxlength=255) }}
+                {% if form.message.errors %}
+                <dl>
+                    {% for error in form.message.errors %}
+                    <dd><small class="text-danger">{{ error }}</small></dd>
+                    {% endfor %}
+                </dl>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Confirmar" class="btn btn-danger btn-sm mt-2">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+{% block javascript %}
+<script>
+    $(document).ready(function () {
+        // enable tooltips
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    });
+</script>
+{% endblock %}

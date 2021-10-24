@@ -1,0 +1,147 @@
+{% extends 'base.html' %}
+
+{% block title %}Informações{% endblock %}
+
+{% block header %}
+<div class="col text-center ">
+    <h4 class="font-weight-light text-white p-2 shadow "><small>Informações</small></h4>
+</div>
+{% endblock %}
+
+{%block content %}
+<div class="row">
+    <div class="col-md-12 px-4 py-2 text-default">
+        <h6 class="main-header font-weight-normal">Servidor</h6>
+        <div class="table-responsive mt-4">
+            <table class="table table-sm borderless table-striped table-dark">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Experiência</th>
+                        <th>Item Drop</th>
+                        <th>Rate Bless</th>
+                        <th>Rate Soul</th>
+                        <th>Rate Life</th>
+                        <th>Baús</th>
+                        <th>Post</th>
+                        <th>Add Pontos</th>
+                        <th>Limpar PK</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge badge-light p-1 px-3">Conta Comum</span></td>
+                        <td>100x</td>
+                        <td>30%</td>
+                        <td>60%</td>
+                        <td>50%</td>
+                        <td>60%</td>
+                        <td>2</td>
+                        <td><span class="badge badge-success p-1 px-3">Habilitado</span></td>
+                        <td><span class="badge badge-success p-1 px-3">Habilitado</span></td>
+                        <td><span class="badge badge-danger p-1 px-3">Desabilitado</span></td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-warning p-1 px-3">Conta Vip</span></td>
+                        <td>300x</td>
+                        <td>50%</td>
+                        <td>80%</td>
+                        <td>70%</td>
+                        <td>80%</td>
+                        <td>5</td>
+                        <td><span class="badge badge-success p-1 px-3">Habilitado</span></td>
+                        <td><span class="badge badge-success p-1 px-3">Habilitado</span></td>
+                        <td><span class="badge badge-success p-1 px-3">Habilitado</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-12 px-4 py-2 text-default">
+        <h6 class="main-header font-weight-normal">Resets</h6>
+        <div class="table-responsive mt-4">
+            <table class="table table-sm borderless table-striped table-dark">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Max. Resets</th>
+                        <th>Reset Level</th>
+                        <th>Reset Pontos</th>
+                        <th>Max. Master Reset</th>
+                        <th>Prêmio Master Reset</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="badge badge-light p-1 px-3">Conta Comum</span></td>
+                        <td>50</td>
+                        <td>400</td>
+                        <td>300</td>
+                        <td>10</td>
+                        <td>50 Cash's</td>
+                    </tr>
+                    <tr>
+                        <td><span class="badge badge-warning p-1 px-3">Conta Vip</span></td>
+                        <td>50</td>
+                        <td>380</td>
+                        <td>500</td>
+                        <td>10</td>
+                        <td>100 Cash's</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-md-12 px-4 py-2 text-default">
+        <h6 class="main-header font-weight-normal">Eventos</h6>
+        <div class="table-responsive mt-4">
+            <table class="table table-sm borderless table-striped table-dark">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Evento</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Blood Castle</td>
+                        <td><span class="badge badge-success py-1 px-2">Habilitado</span></td>
+                    </tr>
+                    <tr>
+                        <td>Devil Square</td>
+                        <td><span class="badge badge-success py-1 px-2">Habilitado</span></td>
+                    </tr>
+                    <tr>
+                        <td>Chaos Castle</td>
+                        <td><span class="badge badge-success py-1 px-2">Habilitado</span></td>
+                    </tr>
+                    <tr>
+                        <td>Castle Siege</td>
+                        <td><span class="badge badge-success py-1 px-2">Habilitado</span></td>
+                    </tr>
+                    <tr>
+                        <td>Gold Invasion</td>
+                        <td><span class="badge badge-success py-1 px-2">Habilitado</span></td>
+                    </tr>
+                    <tr>
+                        <td>Kalima</td>
+                        <td><span class="badge badge-success py-1 px-2">Habilitado</span></td>
+                    </tr>
+                    <tr>
+                        <td>Kanturu</td>
+                        <td><span class="badge badge-success py-1 px-2">Habilitado</span></td>
+                    </tr>
+                    <tr>
+                        <td>Loren Deep</td>
+                        <td><span class="badge badge-success py-1 px-2">Habilitado</span></td>
+                    </tr>
+                    <tr>
+                        <td>Castle Siege</td>
+                        <td><span class="badge badge-danger py-1 px-2">Desabilitado</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

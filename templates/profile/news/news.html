@@ -1,0 +1,56 @@
+{% extends 'profile.html' %}
+{% block title %}Painel - Administração - Notícias{% endblock %}
+{% block subcontent %}
+<div class="row">
+    <div class="col-md-12 mt-2 ">
+        <h6 class="main-header font-weight-normal my-2">Administrar Notícias</h6>
+    </div>
+    <div class="col-md-12">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <p class="col alert alert-{{ category }} mx-1 my-2 p-1 text-center">
+            <small class="text-dark"><strong>Atenção:</strong> {{ message }}</small>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
+    <div class="col-md-12 mt-2">
+        <a href="{{ url_for('account_add_news') }}" class="btn btn-sm btn-success text-white mb-3">Adicionar</a>
+        <div class="table-responsive">
+            <table class="table table-sm borderless table-striped table-dark">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Criado Em</th>
+                        <th>Título</th>
+                        <th>Autor</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if news %}
+                    {% for item in news %}
+                    <tr>
+                        <td>{{ item[2]|strftime("%x") }}</td>
+                        <td>{{ item[1] }}</td>
+                        <td>{{ item[3] }}</td>
+                        <td>
+                            <a href="{{ url_for('account_edit_news', id=item[0]) }}" class="text-info mx-2"><i
+                                    class="fa fa-pencil" aria-hidden="true" title="Editar"></i></a>
+                            <a href="{{ url_for('account_remove_news', id=item[0]) }}" class="text-danger mx-2"><i
+                                    class="fa fa-trash" aria-hidden="true" title="Excluir"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}Últimas Notícias{% endblock %}
+
+{% block header %}
+<div class="col text-center ">
+    <a class=" btn btn-danger btn-md mb-2 mr-2 " href="{{ url_for( 'downloads') }} ">Baixar Jogo</a>
+    <a class="btn btn-light text-dark btn-md mb-2 ml-2 " href="{{ url_for( 'register') }} ">Registrar-se</a>
+    <h4 class="font-weight-light text-white p-2 shadow "><small>Embarque nessa aventura,
+            enfrente os desafios do continente perdido de MU.</small></h4>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12 px-4 py-2">
+        <h5 class="main-header font-weight-normal">Notícias</h5>
+        <ul class="timeline">
+            {% for item in news %}
+            <li>
+                <a href="{{ url_for('news', id=item[0])}}">{{ item[2] }}</a>
+                <span class="float-right"><small>{{ item[1]|strftime("%x") }}</small></span>
+                <p><small>{{ item[3] }}</small>
+                </p>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

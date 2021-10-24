@@ -1,0 +1,75 @@
+{% extends 'profile.html' %}
+{% block title %}Painel - Alterar Nome de Personagem{% endblock %}
+{% block subcontent %}
+<div class="row">
+    <div class="col-md-12 mt-2 ">
+        <h6 class="main-header font-weight-normal my-2">Alterar Nome de Personagem</h6>
+    </div>
+    <div class="col-md-12 mt-2">
+        <p class="col bg-warning m-1 p-1 text-center">
+            <small class="text-dark"><strong>Atenção:</strong> Para alterar o nome do personagem é necessário possuir {{ NAME_CHANGE_COST }}
+                créditos de Cash.</small>
+        </p>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <p class="col alert alert-{{ category }} mx-1 my-3 p-1 text-center">
+            <small class="text-dark"><strong>Atenção:</strong> {{ message }}</small>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <form action="{{ url_for('char_change_name')}}" method="post" class="form col-md-4 my-4">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                <label for="characterName" class="text-default">
+                    <small>Personagem</small>
+                </label>
+                <select class="form-control form-control-sm" id="characterName" name="characterName">
+                    <option selected="selected">Selecione o personagem</option>
+                    {% if characters %}
+                    {% for character in characters %}
+                    {{ character[0] }}
+                    <option value="{{ character[0] }}">{{ character[0] }}</option>
+                    {% endfor %}
+                    {% endif %}
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="charname" class="text-default">
+                    <small>Novo Nome</small>
+                    <small>
+                        <i class="fa fa-question-circle-o" aria-hidden="true" data-toggle="tooltip" data-placement="top"
+                            title="Serão aceitos apenas caracteres de A-Z, 0-9 e underline neste campo."></i>
+                    </small>
+                </label>
+                {{ form.charname(class="form-control form-control-sm",  maxlength=10) }}
+                {% if form.charname.errors %}
+                <dl>
+                    {% for error in form.charname.errors %}
+                    <dd><small class="text-danger">{{ error }}</small></dd>
+                    {% endfor %}
+                </dl>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Confirmar" class="btn btn-danger btn-sm">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
+{% block javascript %}
+<script>
+    $(document).ready(function () {
+        // enable tooltips
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    });
+</script>
+{% endblock %}

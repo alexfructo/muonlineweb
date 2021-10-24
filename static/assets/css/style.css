@@ -1,0 +1,150 @@
+/*
+*   Filename:   style.css
+*   Path:       assets/css/
+*   Author:     Alex Fructo <alexfructo@gmail.com>
+*   Template:   Devil
+*/
+
+html {
+    position: relative !important;
+    min-height: 100% !important;
+}
+
+body {
+    margin-bottom: 60px !important;
+    background-color: #000 !important;
+}
+
+.masthead {
+    height: 280px;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgb(0, 0, 0)), url('../images/banner/item-01.jpg');
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #b4b4b4;
+    text-align: center;
+}
+
+footer>div>small>a {
+    color: #b4b4b4;
+}
+
+footer>div>small>a:hover {
+    color: #fff;
+}
+
+.navbar {
+    background-color: #000 !important;
+}
+
+.navbar-brand img {
+    height: 24px !important;
+    margin-bottom: 5px !important;
+}
+
+.main-header {
+    color: #b4b4b4;
+    padding-bottom: 3px;
+    border-bottom: 1px dashed #131313;
+}
+
+.main-content-text {
+    color: #a7a7a7;
+}
+
+ul.timeline {
+    list-style-type: none;
+    position: relative;
+    color: #6e6e6e;
+}
+
+ul.timeline:before {
+    content: ' ';
+    background: #87888a;
+    display: inline-block;
+    position: absolute;
+    left: 29px;
+    width: 2px;
+    height: 100%;
+    z-index: 400;
+}
+
+ul.timeline>li {
+    margin: 20px 0;
+    padding-left: 20px;
+}
+
+ul.timeline>li>a {
+    color: #b4b4b4;
+}
+
+ul.timeline>li>a:hover {
+    color: #fff;
+}
+
+ul.timeline>li>span {
+    color: #b4b4b4;
+}
+
+ul.timeline>li:before {
+    content: ' ';
+    background: rgb(0, 0, 0);
+    display: inline-block;
+    position: absolute;
+    border-radius: 50%;
+    border: 2px solid #aa1818;
+    left: 20px;
+    width: 20px;
+    height: 20px;
+    z-index: 400;
+}
+
+.tooltip-inner {
+    background-color: #d84a4a;
+}
+
+.tooltip.bs-tooltip-right .arrow:before {
+    border-right-color: #d84a4a !important;
+}
+
+.tooltip.bs-tooltip-left .arrow:before {
+    border-left-color: #d84a4a !important;
+}
+
+.tooltip.bs-tooltip-bottom .arrow:before {
+    border-bottom-color: #d84a4a !important;
+}
+
+.tooltip.bs-tooltip-top .arrow:before {
+    border-top-color: #d84a4a !important;
+}
+
+.g-recaptcha {
+    transform:scale(0.85);
+    transform-origin:0 0;
+}
+
+table {
+    font-size: 75%;
+}
+
+.table td, .borderless th {
+    border: none;
+}
+
+.text-default {
+    color: rgb(201, 201, 201) !important;
+    font-weight: normal !important;
+}
+
+.text-default a:hover{
+    text-decoration: none;
+    color: #fff;
+}

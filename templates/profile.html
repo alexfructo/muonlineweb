@@ -1,0 +1,201 @@
+{% extends 'base.html' %}
+
+{% block title %}Painel{% endblock %}
+
+{% block header %}
+<div class="col text-center ">
+    <div class="row p-2 justify-content-center">
+        <div class="col-md-12">
+            <h3 class="text-center text-white">Bem vindo, {{ session['username'] }}</h3>
+            {% if user %}
+            <p class="text-center text-default">
+                {% if user[2] <= 0 %}
+                <span class="badge badge-light p-1 px-3">Conta Comum</span>
+                {% endif %}
+                {% if user[2] > 0 %}
+                <span class="badge badge-warning p-1 px-3">Conta VIP</span><br>
+                <small class="text-warning">{{ user[5] }} dia(s) restantes</small>
+                {% endif %}
+            </p>
+            <p class="text-center text-default">
+                <small class="text-info">Você possui {{ user[4] }} crédito(s) de Cash</small>
+            </p>
+            {% endif %}
+            <p class="text-center text-default">
+                {% if last_logon %}
+                <small>Sua última conexão no site foi em {{ last_logon[0]|strftime("%d de %B de %Y as %H:%M") }},
+                    utilizando o IP
+                    {{ last_logon[1] }}.</small>
+                {% endif %}
+            </p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-12 text-center">
+        <ul class="list-inline">
+            <li class="list-inline-item">
+                <div class="dropdown dropdown-toggle text-danger">
+                    <a href="#" class="text-default" role="button" id="dropdownChar" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"><small>Personagens</small></a>
+                    <div class="dropdown-menu m-0 p-0" aria-labelledby="dropdownChar">
+                        <a class="dropdown-item m-0 pl-2" href="{{ url_for('profile') }}"><small>Visualizar</small></a>
+                        <!--<a class="dropdown-item m-0 pl-2" href="{{ url_for('char_change_name') }}"><small>Alterar
+                                Nome</small></a>-->
+                    </div>
+                </div>
+            </li>
+            <li class="list-inline-item">
+                <div class="dropdown dropdown-toggle text-danger">
+                    <a href="#" class="text-default" role="button" id="dropdownPerson" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"><small>Dados Pessoais</small></a>
+                    <div class="dropdown-menu m-0 p-0" aria-labelledby="dropdownPerson">
+                        <a class="dropdown-item m-0 pl-2" href="{{ url_for('account_change_password') }}"><small>Alterar Senha</small></a>
+                        <a class="dropdown-item m-0 pl-2" href="{{ url_for('account_change_pid') }}"><small>Alterar Nº Pessoal</small></a>
+                    </div>
+                </div>
+            </li><!--
+            <li class="list-inline-item">
+                <div class="dropdown dropdown-toggle text-danger">
+                    <a href="#" class="text-default" role="button" id="dropdownContrib" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"><small>Contribuições</small></a>
+                    <div class="dropdown-menu m-0 p-0" aria-labelledby="dropdownContrib">
+                        <a class="dropdown-item m-0 pl-2" href="#"><small>Visualizar</small></a>
+                        <a class="dropdown-item m-0 pl-2" href="#"><small>Fazer</small></a>
+                    </div>
+                </div>
+            </li>-->
+            {% if user[2] > 0%}
+            <li class="list-inline-item">
+                <div class="dropdown dropdown-toggle text-danger">
+                    <a href="#" class="text-default" role="button" id="dropdownAdmin" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false"><small>Administração</small></a>
+                    <div class="dropdown-menu m-0 p-0" aria-labelledby="dropdownContrib">
+                        <a class="dropdown-item m-0 pl-2" href="{{ url_for('account_news') }}"><small>Notícias</small></a>
+                    </div>
+                </div>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+</div>
+{% block subcontent %}
+{% if characters %}
+<div class="row">
+    <div class="col-md-12 mt-2 ">
+        <h6 class="main-header font-weight-normal my-2">Meus Personagens</h6>
+        <div class="table-responsive">
+            <table class="table table-sm borderless table-striped table-dark">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>
+                            Nome
+                        </th>
+                        <th>
+                            Classe
+                        </th>
+                        <th>
+                            Resets
+                        </th>
+                        <th>
+                            Master Resets
+                        </th>
+                        <th>
+                            Level
+                        </th>
+                        <th>
+                            Força
+                        </th>
+                        <th>
+                            Agilidade
+                        </th>
+                        <th>
+                            Vitalidade
+                        </th>
+                        <th>
+                            Energia
+                        </th>
+                        <th>
+                            Status
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% if characters %}
+                    {% for character in characters %}
+                    <tr>
+                        <td>{{ character[0] }}</td>
+                        <td> {% if character[1]  == 0 %}
+                            Dark Wizard
+                            {% endif %}
+                            {% if character[1]  == 1 %}
+                            Soul Master
+                            {% endif %}
+                            {% if character[1]  == 3 %}
+                            Grand Master
+                            {% endif %}
+                            {% if character[1]  == 16 %}
+                            Dark Knight
+                            {% endif %}
+                            {% if character[1]  == 17 %}
+                            Blade Knigth
+                            {% endif %}
+                            {% if character[1]  == 18 %}
+                            Blade Master
+                            {% endif %}
+                            {% if character[1]  == 32 %}
+                            Elf
+                            {% endif %}
+                            {% if character[1]  == 33 %}
+                            Muse Elf
+                            {% endif %}
+                            {% if character[1]  == 34 %}
+                            High Elf
+                            {% endif %}
+                            {% if character[1]  == 48 %}
+                            Magic Gladiator
+                            {% endif %}
+                            {% if character[1]  == 49 %}
+                            Duel Master
+                            {% endif %}
+                            {% if character[1]  == 50 %}
+                            Duel Master
+                            {% endif %}
+                            {% if character[1]  == 64 %}
+                            Dark Lord
+                            {% endif %}
+                            {% if character[1]  == 65 %}
+                            Lord Emperor
+                            {% endif %}
+                            {% if character[1]  == 66 %}
+                            Lord Emperor
+                            {% endif %}</td>
+                        <td>
+                            {{ character[2] }}
+                        </td>
+                        <td>{{ character[3] }}</td>
+                        <td>{{ character[4] }}</td>
+                        <td>{{ character[5] }}</td>
+                        <td>{{ character[6] }}</td>
+                        <td>{{ character[7] }}</td>
+                        <td>{{ character[8] }}</td>
+                        <td>
+                            {% if character[12] > 0 %}
+                            <span class="badge badge-success p-1 px-3">Online</span>
+                            {% else %}
+                            <span class="badge badge-danger p-1 px-3">Offline</span>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    {% endif %}
+    {% endblock %}
+    {% endblock %}

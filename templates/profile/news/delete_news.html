@@ -1,0 +1,22 @@
+{% extends 'profile.html' %}
+{% block title %}Painel - Administração - Notícias - Deletar{% endblock %}
+{% block subcontent %}
+<div class="row">
+    <div class="col-md-12 mt-2 ">
+        <h6 class="main-header font-weight-normal my-2">Deletar Notícia</h6>
+    </div>
+    <div class="col-md-12 mt-2">
+        <div class="mt-2">
+            <h5 class="text-default">{{ data[2] }}</h5>
+            <span class="text-muted float-right"><small>{{ data[1]|strftime("%x")}}</small></span>
+            <p class="text-muted"><small>{{ data[3] }}</small></p>
+            <p class="main-header"><small>{{ data[4] }}</small></p>
+        </div>
+        <form action="" method="post">
+            <div class="form-group">
+                <input type="submit" value="Confirmar Exclusão" class="btn btn-danger btn-sm mt-2">
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

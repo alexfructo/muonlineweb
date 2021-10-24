@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}{{ data[2] }}{% endblock %}
+{% block header %}
+<div class="col text-center ">
+    <h4 class="font-weight-light text-white p-2 shadow "><small>Notícias</small></h4>
+</div>
+{% endblock %}
+{% block content %}
+{% if data %}
+<div class="row">
+    <div class="col-md-12 px-4 py-2">
+        <h5 class="main-header font-weight-normal">{{ data[2] }}</h5>
+        <span class="text-muted float-right"><small>{{ data[1]|strftime("%x")}}</small></span>
+        <p class="text-muted"><small>{{ data[3] }}</small></p>
+        <p class="main-header"><small>{{ data[4] }}</small></p>
+        <span class="float-left"><small><a class="text-white" href="#"
+                    onclick="window.history.go(-1); return false;">Voltar</a></small></span>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ SERVER_NAME }} - {% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='assets/images/favicon.png') }}" type="image/x-icon">
+    {% block css %}{% endblock %}
+</head>
+
+<body>
+    <div class="container">
+
+        <nav class="navbar sticky-top navbar-expand-lg navbar-dark shadow-lg">
+            <a class="navbar-brand" href="{{ url_for('index') }}"><img
+                    src="{{ url_for('static', filename='assets/images/logo.png') }}" alt="{{ SERVER_NAME }}"></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Navegação">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('register') }}">Registro</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('downloads') }}">Downloads</a>
+                    </li>
+                    <!--
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('rankings') }}">Rankings</a>
+                        </li>-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('informations') }}">Informações</a>
+                    </li>
+                    <!--
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('shop') }}">Loja</a>
+                        </li>-->
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('contact') }}">Contato</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav mr-0">
+                    {% if not session['username'] %}
+                    <li class="nav-item">
+                        <a class="btn btn-outline-danger btn-sm px-2" href="{{ url_for('login') }}" role="button">
+                            Entrar
+                        </a>
+                    </li>
+                    {% else %}
+                    <li class="nav-item">
+                        <div class="dropdown">
+                            <a class="btn btn-outline-danger dropdown-toggle btn-sm" href="#" role="button"
+                                id="dropdownMenuLogin" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">
+                                {{ session['username'] }}
+                            </a>
+
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLogin">
+                                <a class="dropdown-item" href="{{ url_for('profile') }}">Minha conta</a>
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#exitModal">Sair</a>
+                            </div>
+                        </div>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </nav>
+
+        <header class="masthead d-flex align-items-end">
+            {% block header %} {% endblock %}
+        </header>
+
+        <main class="py-4 px-2">
+            <div class="container">
+                {% block content %} {% endblock %}
+            </div>
+        </main>
+
+        <footer>
+            <div class="col py-4 mt-5 text-center ">
+                <small>
+                    <a href="{{ url_for( 'index') }} ">{{ SERVER_NAME }}</a> - 2020 &copy; - Todos
+                    os direitos reservados.
+                </small>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Modal Exit -->
+    <div class="modal fade" id="exitModal" tabindex="-1" role="dialog" aria-labelledby="exitModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exitModalLabel">Por favor, confirme a ação.</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    Deseja realmente sair?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <a type="button" class="btn btn-danger" href="{{ url_for('logout') }}">Confirmar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js "
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN "
+        crossorigin="anonymous "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js "
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q "
+        crossorigin="anonymous "></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js "
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl "
+        crossorigin="anonymous "></script>
+    {% block javascript %} {% endblock %}
+</body>
+
+</html>

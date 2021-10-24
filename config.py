@@ -41,7 +41,7 @@ CHAR_CNAME_COST = 50                # CASH COST TO CHARACTER CHANGE NAME
 #   APP SETTINGS
 ################################################################################################################################
 
-WEB_SECRET_KEY      = "6LcGX-4UAAAAADtjnZ0Gz7CuTRkhSEmmmknZxzFv"    # APP SECRET KEY
+WEB_SECRET_KEY      = ""    # APP SECRET KEY
 WEB_PUBLIC_KEY      = "6LcGX-4UAAAAAFjOUz3mkqm7X_lHME6itambsphh"    # APP PUBLIC KEY
 WEB_HOST            = "localhost"                                   # WEB SERVER HOST OR IP
 WEB_PORT            = 80                                            # WEB SERVER TCP PORT

@@ -42,3 +42,9 @@ CHAR_CNAME_COST = 50                # CASH COST TO CHARACTER CHANGE NAME
 ```
 
 ## Pré visualização
+
+![image](https://github.com/alexfructo/muonlineweb/blob/main/templates/preview/index.png?raw=true)
+![image](https://github.com/alexfructo/muonlineweb/blob/main/templates/preview/register.png?raw=true)
+![image](https://github.com/alexfructo/muonlineweb/blob/main/templates/preview/gameserver-info.png)
+![image](https://github.com/alexfructo/muonlineweb/blob/main/templates/preview/user-panel.png)
+![image](https://github.com/alexfructo/muonlineweb/blob/main/templates/preview/user-admin-addnews.png)
